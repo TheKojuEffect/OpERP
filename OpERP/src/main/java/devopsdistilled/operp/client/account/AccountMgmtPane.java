@@ -34,11 +34,12 @@ public class AccountMgmtPane extends TaskPane {
 	@Override
 	public JComponent getPane() {
 		JPanel pane = new JPanel();
-		pane.setLayout(new MigLayout("", "[136px,grow]", "[15px][][][][]"));
+		pane.setLayout(new MigLayout("", "[136px,grow]", "[15px][][][][][][][]"));
 		pane.add(new JLabel("Account Management"),
 				"cell 0 0,alignx center,aligny top");
 
-		JButton btnReceivePayment = new JButton("Receive Payment  from Customer");
+		JButton btnReceivePayment = new JButton(
+				"Receive Payment  from Customer");
 		btnReceivePayment.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -56,6 +57,23 @@ public class AccountMgmtPane extends TaskPane {
 			}
 		});
 		pane.add(btnPayPayment, "cell 0 4");
+
+		JButton btnPayEmployee = new JButton("Pay Employee");
+		btnPayEmployee.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		
+		JButton btnUpdateEmployeesAccount = new JButton("Update Employees Account");
+		btnUpdateEmployeesAccount.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		pane.add(btnUpdateEmployeesAccount, "cell 0 6");
+		pane.add(btnPayEmployee, "cell 0 7");
 		return pane;
 	}
 
