@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.miginfocom.swing.MigLayout;
+import devopsdistilled.operp.client.abstracts.EntityOperation;
 import devopsdistilled.operp.client.abstracts.TaskPane;
 import devopsdistilled.operp.client.account.controllers.PaidTransactionController;
 import devopsdistilled.operp.client.account.controllers.ReceivedTransactionController;
+import devopsdistilled.operp.client.account.panes.controllers.EmployeePaidTransactionPaneController;
+import devopsdistilled.operp.server.data.entity.account.PaidTransaction;
 
 public class AccountMgmtPane extends TaskPane {
 
@@ -22,6 +25,9 @@ public class AccountMgmtPane extends TaskPane {
 
 	@Inject
 	private PaidTransactionController paidTransactionController;
+
+	@Inject
+	private EmployeePaidTransactionPaneController employeePaidTransactionPaneController;
 
 	@Override
 	public String toString() {
@@ -62,11 +68,13 @@ public class AccountMgmtPane extends TaskPane {
 		btnPayEmployee.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				employeePaidTransactionPaneController.init(
+						new PaidTransaction(), EntityOperation.Create);
 			}
 		});
-		
-		JButton btnUpdateEmployeesAccount = new JButton("Update Employees Account");
+
+		JButton btnUpdateEmployeesAccount = new JButton(
+				"Update Employees Account");
 		btnUpdateEmployeesAccount.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
