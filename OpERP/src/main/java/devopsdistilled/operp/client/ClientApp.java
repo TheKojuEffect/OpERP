@@ -12,6 +12,7 @@ import devopsdistilled.operp.client.main.MainWindow;
 public class ClientApp {
 
 	public static void main(String[] args) {
+
 		try {
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -23,6 +24,11 @@ public class ClientApp {
 			System.err
 					.println("Nimbus Look and Feel not available.\nReverting to default");
 		}
+
+		if (args.length > 0)
+			System.setProperty("server.rmi.host.address", args[0]);
+		else
+			System.setProperty("server.rmi.host.address", "127.0.1.1");
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				AppContext.class);
